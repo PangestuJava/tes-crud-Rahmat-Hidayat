@@ -1,0 +1,4 @@
+{
+  "intelephense.diagnostics.deprecated": false,
+  "php.validate.enable": false
+}
