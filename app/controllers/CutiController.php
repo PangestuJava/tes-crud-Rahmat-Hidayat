@@ -1,8 +1,7 @@
 <?php
-
-use Cuti;
-use Karyawan;
-use ValidationService;
+require_once __DIR__ . '/../models/Cuti.php';
+require_once __DIR__ . '/../models/Karyawan.php';
+require_once __DIR__ . '/../services/ValidationService.php';
 
 class CutiController
 {
@@ -60,6 +59,13 @@ class CutiController
             if (!$error && !$this->val->isDate($_POST['tanggal_mulai']))   $error = 'Format tanggal mulai tidak valid.';
             if (!$error && !$this->val->isDate($_POST['tanggal_selesai'])) $error = 'Format tanggal selesai tidak valid.';
             if (!$error && $_POST['tanggal_selesai'] < $_POST['tanggal_mulai']) $error = 'Tanggal selesai harus >= tanggal mulai.';
+
+            if (!$error) {
+                $karyawan = $karyawanModel->find((int)$_POST['id_karyawan']);
+                if ($karyawan && $_POST['tanggal_mulai'] < $karyawan['tanggal_masuk']) {
+                    $error = 'Tanggal mulai cuti tidak boleh sebelum tanggal masuk karyawan (' . $karyawan['tanggal_masuk'] . ').';
+                }
+            }
 
             if (!$error) {
                 $data = $_POST;

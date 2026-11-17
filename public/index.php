@@ -12,7 +12,7 @@ $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
 if ($scriptDir === '/' || $scriptDir === '.') $scriptDir = '';
 $base = $scriptDir;
 if (substr($base, -7) === '/public') $base = substr($base, 0, -7);
-define('BASE_URL', $base . '/public');
+define('BASE_URL', $base === '' ? '' : $base . '/public');
 
 function url($path = '') {
     return BASE_URL . '/' . ltrim($path, '/');

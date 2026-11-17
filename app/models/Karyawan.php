@@ -1,6 +1,5 @@
 <?php
-
-use BaseModel;
+require_once __DIR__ . '/BaseModel.php';
 
 class Karyawan extends BaseModel
 {
