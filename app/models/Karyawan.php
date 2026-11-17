@@ -17,13 +17,13 @@ class Karyawan extends BaseModel
         return $this->fetchAll($sql);
     }
 
-    public function find(int $id)
+    public function find($id)
     {
         $id = (int)$id;
         return $this->fetchOne("SELECT * FROM karyawan WHERE id = $id");
     }
 
-    public function nikExists(string $nik, $exceptId = 0)
+    public function nikExists($nik, $exceptId = 0)
     {
         $nik = $this->esc($nik);
         $id  = (int)$exceptId;
@@ -31,7 +31,7 @@ class Karyawan extends BaseModel
         return $row['cnt'] > 0;
     }
 
-    public function emailExists(string $email, $exceptId = 0)
+    public function emailExists($email, $exceptId = 0)
     {
         $email = $this->esc($email);
         $id    = (int)$exceptId;
@@ -39,7 +39,7 @@ class Karyawan extends BaseModel
         return $row['cnt'] > 0;
     }
 
-    public function create(array $d)
+    public function create($d)
     {
         $sql = sprintf(
             "INSERT INTO karyawan (nik,nama,email,no_telp,alamat,tanggal_lahir,tanggal_masuk,id_departemen,id_jabatan,gaji)
@@ -59,7 +59,7 @@ class Karyawan extends BaseModel
         return $this->insertId();
     }
 
-    public function update(int $id, array $d)
+    public function update($id, $d)
     {
         $id = (int)$id;
         $sql = sprintf(
@@ -81,13 +81,13 @@ class Karyawan extends BaseModel
         return $this->run($sql);
     }
 
-    public function delete(int $id)
+    public function delete($id)
     {
         $id = (int)$id;
         return $this->run("DELETE FROM karyawan WHERE id = $id");
     }
 
-    public function hasCuti(int $id)
+    public function hasCuti($id)
     {
         $id  = (int)$id;
         $row = $this->fetchOne("SELECT COUNT(*) AS cnt FROM transaksi_cuti WHERE id_karyawan = $id");

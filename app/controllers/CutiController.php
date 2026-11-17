@@ -5,8 +5,8 @@ require_once __DIR__ . '/../services/ValidationService.php';
 
 class CutiController
 {
-    private Cuti $model;
-    private ValidationService $val;
+    private $model;
+    private $val;
 
     public function __construct()
     {

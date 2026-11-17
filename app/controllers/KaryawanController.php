@@ -32,7 +32,7 @@ class KaryawanController
         $error = '';
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $required = array('nik','nama','email','no_telp','alamat','tanggal_lahir','tanggal_masuk','id_departemen','id_jabatan','gaji');
+            $required = array('nik', 'nama', 'email', 'no_telp', 'alamat', 'tanggal_lahir', 'tanggal_masuk', 'id_departemen', 'id_jabatan', 'gaji');
             $error = $this->val->required($required, $_POST);
 
             if (!$error && !$this->val->isDate($_POST['tanggal_lahir'])) $error = 'Format tanggal lahir tidak valid.';
@@ -67,7 +67,7 @@ class KaryawanController
         $error = '';
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $required = array('nik','nama','email','no_telp','alamat','tanggal_lahir','tanggal_masuk','id_departemen','id_jabatan','gaji');
+            $required = array('nik', 'nama', 'email', 'no_telp', 'alamat', 'tanggal_lahir', 'tanggal_masuk', 'id_departemen', 'id_jabatan', 'gaji');
             $error = $this->val->required($required, $_POST);
 
             if (!$error && !$this->val->isDate($_POST['tanggal_lahir'])) $error = 'Format tanggal lahir tidak valid.';
